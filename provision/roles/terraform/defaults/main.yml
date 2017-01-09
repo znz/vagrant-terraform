@@ -1,0 +1,9 @@
+---
+terraform_download_dir: "/home/{{ ansible_user_id }}/tmp"
+terraform_bin_dir: "/home/{{ ansible_user_id }}/bin"
+terraform_linux_amd64:
+  url: "https://releases.hashicorp.com/terraform/0.8.2/terraform_0.8.2_linux_amd64.zip"
+  checksum: "sha256:a366fd2d7d8908d23acc23ab151fc692615a147f8832971bb43e42995554c652"
+terraform_provider_sakuracloud_linux_amd64:
+  url: "https://github.com/yamamoto-febc/terraform-provider-sakuracloud/releases/download/v0.6.0/terraform-provider-sakuracloud_linux-amd64.zip"
+  checksum: "sha256:f4a7926e466d65f9c7cb0ce617ad7139bc636ddac822d3b1b90cd374584adeba"

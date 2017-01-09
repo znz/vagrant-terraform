@@ -15,5 +15,6 @@
   roles:
     - znz.user-dot-shell
     - znz.user-vim
+    - terraform
   vars_files:
     - user-config.yml

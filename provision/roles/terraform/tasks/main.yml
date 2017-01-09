@@ -1,0 +1,62 @@
+---
+- name: "$HOME/bin"
+  file:
+    state: directory
+    path: "{{ terraform_bin_dir }}"
+    owner: "{{ ansible_user_uid }}"
+    group: "{{ ansible_user_gid }}"
+    mode: 0755
+- name: "{{ terraform_download_dir }}"
+  file:
+    state: directory
+    path: "{{ terraform_download_dir }}"
+    owner: "{{ ansible_user_uid }}"
+    group: "{{ ansible_user_gid }}"
+    mode: 0755
+- name: "{{ terraform_download_dir }}/terraform"
+  file:
+    state: directory
+    path: "{{ terraform_download_dir }}/terraform"
+    owner: "{{ ansible_user_uid }}"
+    group: "{{ ansible_user_gid }}"
+    mode: 0755
+
+- name: "download terraform"
+  get_url:
+    url: "{{ terraform_linux_amd64.url }}"
+    dest: "{{ terraform_download_dir }}/{{ terraform_linux_amd64.url | basename }}"
+    checksum: "{{ terraform_linux_amd64.checksum }}"
+- name: "extract terraform"
+  unarchive:
+    src: "{{ terraform_download_dir }}/{{ terraform_linux_amd64.url | basename }}"
+    dest: "{{ terraform_download_dir }}/terraform"
+    remote_src: yes
+    creates: "{{ terraform_download_dir }}/terraform/terraform"
+- name: "bin/terraform"
+  file:
+    state: link
+    force: yes
+    src: "{{ terraform_download_dir }}/terraform/terraform"
+    dest: "{{ terraform_bin_dir }}/terraform"
+    owner: "{{ ansible_user_uid }}"
+    group: "{{ ansible_user_gid }}"
+
+- name: "download terraform-provider-sakuracloud"
+  get_url:
+    url: "{{ terraform_provider_sakuracloud_linux_amd64.url }}"
+    dest: "{{ terraform_download_dir }}/{{ terraform_provider_sakuracloud_linux_amd64.url | basename }}"
+    checksum: "{{ terraform_provider_sakuracloud_linux_amd64.checksum }}"
+- name: "extract terraform-provider-sakuracloud"
+  unarchive:
+    src: "{{ terraform_download_dir }}/{{ terraform_provider_sakuracloud_linux_amd64.url | basename }}"
+    dest: "{{ terraform_download_dir }}/terraform"
+    remote_src: yes
+    creates: "{{ terraform_download_dir }}/terraform/terraform-provider-sakuracloud"
+- name: "bin/terraform-provider-sakuracloud"
+  file:
+    state: link
+    force: yes
+    src: "{{ terraform_download_dir }}/terraform/terraform-provider-sakuracloud"
+    dest: "{{ terraform_bin_dir }}/terraform-provider-sakuracloud"
+    owner: "{{ ansible_user_uid }}"
+    group: "{{ ansible_user_gid }}"
