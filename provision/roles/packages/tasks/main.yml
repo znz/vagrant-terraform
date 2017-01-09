@@ -1,0 +1,5 @@
+---
+- include: editor.yml tags=packages-editor
+- include: build.yml tags=packages-build
+- include: misc.yml tags=packages-misc
+- include: unattended-upgrades.yml tags=unattended-upgrades

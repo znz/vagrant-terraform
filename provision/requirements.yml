@@ -1,0 +1,8 @@
+- src: znzj.ja_jp
+- src: znz.journald
+- src: https://github.com/znz/ansible-role-user-dot-shell
+  version: master
+  name: znz.user-dot-shell
+- src: https://github.com/znz/ansible-role-user-vim
+  version: master
+  name: znz.user-vim

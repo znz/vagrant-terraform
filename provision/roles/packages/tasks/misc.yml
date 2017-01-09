@@ -1,0 +1,25 @@
+---
+- name: install byobu
+  apt: name=byobu
+- name: install curl
+  apt: name=curl
+- name: install aptitude
+  apt: name=aptitude
+- name: install haveged
+  apt: name=haveged
+- name: install lv
+  apt: name=lv
+- name: install source-highlight
+  apt: name=source-highlight
+- name: install zsh
+  apt: name=zsh
+- name: install silversearcher-ag
+  apt: name=silversearcher-ag
+- name: install shellcheck
+  apt: name=shellcheck
+- name: install vim-editorconfig
+  apt: name=vim-editorconfig
+- name: install 7z
+  apt: name=p7zip-full
+- name: install unzip
+  apt: name=unzip

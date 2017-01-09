@@ -1,0 +1,5 @@
+/.vagrant/
+/provision/config.yml
+/provision/user-config.yml
+/provision/playbook.retry
+/provision/roles/*.*
